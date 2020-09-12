@@ -14,8 +14,8 @@ function Settings() {
   const [bio, setBio] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [, setToken]= useLocalStorage('token');
-  const [ successfulLogout, setSuccessfulLogout] = useState(false)
+  const [, setToken] = useLocalStorage('token');
+  const [successfulLogout, setSuccessfulLogout] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,11 +34,10 @@ function Settings() {
     });
   };
   const logout = (e) => {
-     e.preventDefault();
-     setToken('')
-     dispatch({type:'LOGOUT'})
-     setSuccessfulLogout(true)
-
+    e.preventDefault();
+    setToken('');
+    dispatch({ type: 'LOGOUT' });
+    setSuccessfulLogout(true);
   };
   const user = currentUserState.currentUser;
 
@@ -58,9 +57,9 @@ function Settings() {
     }
     dispatch({ type: 'SET_AUTHORIZED', payload: response.user });
   }, [response, dispatch]);
- if (successfulLogout){
-  return <Redirect to='/' />
- }
+  if (successfulLogout) {
+    return <Redirect to='/' />;
+  }
   return (
     <div className='settings-page'>
       <div className='container page'>

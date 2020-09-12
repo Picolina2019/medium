@@ -11,7 +11,6 @@ import FeedToggler from '../../FeedToggler';
 
 export default function YourFeed({ location, match }) {
   const { offset, currentPage } = getPaginator(location.search);
-  console.log('dd', offset, currentPage);
   const stringifiedParams = stringify({
     limit,
     offset,
@@ -22,6 +21,8 @@ export default function YourFeed({ location, match }) {
   useEffect(() => {
     doFetch();
   }, [doFetch, currentPage]);
+  console.log(response)
+  
   return (
     <div className='home-page'>
       <div className='banner'>
